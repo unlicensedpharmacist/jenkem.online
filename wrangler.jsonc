@@ -1,0 +1,18 @@
+{
+  "name": "jenkem-online",
+  "main": "worker.js",
+  "compatibility_date": "2025-10-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  // No database_id on purpose: Wrangler creates the "jenkem-online" D1 database
+  // on the first deploy and keeps it linked after that.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "jenkem-online"
+    }
+  ]
+}

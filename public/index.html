@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jenkem — Maison des Fumes</title>
+<meta name="description" content="jenkem.online is a parody luxury house. Nothing is for sale. Jenkem is an old internet hoax.">
+<meta name="theme-color" content="#2b1d33">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='10' y='2' width='12' height='6' rx='1' fill='%23c8a24a'/><rect x='5' y='8' width='22' height='22' rx='7' fill='%238c6bb1'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,0..100;1,9..144,300..800,0..100&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div id="live-strip" class="live-strip" hidden>
+  <span class="live-dot" aria-hidden="true"></span>
+  <span>Blinddudesgame is live<span id="live-title"></span></span>
+  <a id="live-link" href="https://www.youtube.com/@Blinddudesgame/live" target="_blank" rel="noopener">Watch the stream</a>
+</div>
+
+<header class="site-head">
+  <a class="wordmark" href="#top" aria-label="Jenkem, home">Jenkem<span class="wm-sub">Maison des Fumes</span></a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="#collection">Collection</a>
+    <a href="#rankings">Rankings</a>
+    <a href="#community">Community</a>
+    <a href="recipes.html">Kitchen</a>
+  </nav>
+  <div class="head-actions">
+    <button class="pill ghost" id="account-btn" type="button">Sign in</button>
+    <button class="pill" id="bag-btn" type="button">Bag <span id="bag-count" class="count">0</span></button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <h1 class="hero-title">
+        <span class="ht-line">The scent of</span>
+        <span class="ht-line ht-it">a rumour</span>
+        <span class="ht-line">nobody could prove.</span>
+      </h1>
+      <p class="hero-lede">A luxury house built on the internet's least-confirmed product. Every bottle is imaginary, every price is a joke, and the bag never checks out.</p>
+      <div class="hero-cta">
+        <a class="pill big" href="#collection">See the collection</a>
+        <a class="link-quiet" href="#about">Wait, what is this?</a>
+      </div>
+    </div>
+    <div class="hero-stage" aria-hidden="true">
+      <div class="fumes">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="bottle hero-bottle" style="--liquid:#a8b545;--glass:#d9cfe6">
+        <span class="cap"></span>
+        <span class="neck"></span>
+        <span class="body"><span class="fill"></span><span class="label"><b>No. 1</b><em>Eau de Rumeur</em></span></span>
+      </div>
+      <p class="stage-note">Eau de Rumeur, 50 ml of nothing</p>
+    </div>
+  </section>
+
+  <section class="collection" id="collection" aria-labelledby="col-h">
+    <div class="sec-head">
+      <h2 id="col-h">The collection</h2>
+      <p>Eight compositions, none of which exist. Add as many as you like.</p>
+    </div>
+    <div id="products" class="products"></div>
+  </section>
+
+  <section class="rankings" id="rankings" aria-labelledby="rank-h">
+    <div class="sec-head">
+      <h2 id="rank-h">This week's rankings</h2>
+      <p>Vote a bottle up and watch it climb. Votes live in your browser and nowhere else.</p>
+    </div>
+    <ol id="ranking" class="ranking"></ol>
+  </section>
+
+  <section class="reviews" aria-labelledby="rev-h">
+    <h2 id="rev-h" class="visually-hidden">What customers said</h2>
+    <div id="review-list" class="review-list"></div>
+  </section>
+
+  <section class="community" id="community" aria-labelledby="com-h">
+    <div class="sec-head">
+      <h2 id="com-h">The salon</h2>
+      <p>Real accounts, real posts, fake product. <span id="member-line"></span></p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Community">
+      <button role="tab" id="tab-forum" aria-controls="panel-forum" aria-selected="true" type="button">Forum</button>
+      <button role="tab" id="tab-wall" aria-controls="panel-wall" aria-selected="false" type="button">The wall</button>
+    </div>
+
+    <div id="panel-forum" role="tabpanel" aria-labelledby="tab-forum" class="panel">
+      <div id="forum-list-view">
+        <div class="forum-bar">
+          <div id="forum-cats" class="chips"></div>
+          <button class="pill" id="forum-new-btn" type="button">Start a thread</button>
+        </div>
+        <form id="forum-new-form" class="form-card" hidden>
+          <div class="row">
+            <label>Category <select id="forum-cat"></select></label>
+            <label class="name-field" id="forum-name-wrap">Your name <input id="forum-name" type="text" maxlength="20" autocomplete="nickname"></label>
+          </div>
+          <label>Title <input id="forum-title" type="text" maxlength="80"></label>
+          <label>Message <textarea id="forum-body" rows="4" maxlength="1000"></textarea></label>
+          <div class="form-foot">
+            <p id="forum-new-err" class="err" role="alert"></p>
+            <button class="pill" id="forum-post-btn" type="submit">Post thread</button>
+          </div>
+        </form>
+        <ul id="forum-threads" class="threads"></ul>
+        <p class="muted" id="forum-status"></p>
+      </div>
+      <div id="forum-thread-view" hidden>
+        <button class="link-quiet back" id="forum-back" type="button">Back to all threads</button>
+        <div id="forum-thread"></div>
+        <form id="forum-reply-form" class="form-card">
+          <label class="name-field" id="forum-rname-wrap">Your name <input id="forum-rname" type="text" maxlength="20" autocomplete="nickname"></label>
+          <label>Reply <textarea id="forum-reply" rows="3" maxlength="1000"></textarea></label>
+          <div class="form-foot">
+            <p id="forum-reply-err" class="err" role="alert"></p>
+            <button class="pill" id="forum-reply-btn" type="submit">Post reply</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="panel-wall" role="tabpanel" aria-labelledby="tab-wall" class="panel" hidden>
+      <form id="wall-form" class="wall-form">
+        <input id="wall-name" class="name-field" type="text" maxlength="20" placeholder="Your name" aria-label="Your name" autocomplete="nickname">
+        <input id="wall-msg" type="text" maxlength="280" placeholder="Say something short" aria-label="Message">
+        <button class="pill" id="wall-btn" type="submit">Post</button>
+      </form>
+      <p id="wall-err" class="err" role="alert"></p>
+      <ul id="wall-list" class="wall"></ul>
+    </div>
+  </section>
+
+  <section class="channel" id="channel" aria-labelledby="ch-h" hidden>
+    <div class="sec-head">
+      <h2 id="ch-h">From the channel</h2>
+      <p>Latest uploads from <a href="https://youtube.com/roostercs" target="_blank" rel="noopener">youtube.com/roostercs</a>.</p>
+    </div>
+    <div id="videos" class="videos"></div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-h">
+    <h2 id="about-h">The fine print, in large print</h2>
+    <div class="about-cols">
+      <p>jenkem.online is a parody. Jenkem is an urban legend and internet hoax, and nothing like it is made, sold or explained here. There is no store, no stock and no payment system. The bag is decoration. Please don't huff anything.</p>
+      <p>Accounts and posts are real, so pick a password you don't use anywhere else. Like most sites, we log visitors' IP addresses, the rough location Cloudflare guesses from them, and basic browser details (the page you came from, screen size, timezone and language). Each entry is deleted 30 days after your last visit.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <span class="wordmark small">Jenkem</span>
+  <nav aria-label="Elsewhere">
+    <a href="https://twitch.tv/unlicensedpharmacist" target="_blank" rel="noopener">Twitch</a>
+    <a href="https://kick.com/unlicensedpharmacist" target="_blank" rel="noopener">Kick</a>
+    <a href="https://youtube.com/roostercs" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://rankjenk.com" target="_blank" rel="noopener">The old site</a>
+  </nav>
+  <p class="muted">&copy; <span id="year"></span> jenkem.online. A parody. Nothing here is for sale.</p>
+</footer>
+
+<!-- bag drawer -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="bag" aria-label="Your bag" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Your bag</h2>
+    <button class="icon-btn" data-close type="button" aria-label="Close bag">&times;</button>
+  </div>
+  <div id="bag-items" class="bag-items"></div>
+  <form id="promo-form" class="promo">
+    <input id="promo" type="text" maxlength="20" placeholder="Promo code" aria-label="Promo code">
+    <button class="pill ghost" type="submit">Apply</button>
+  </form>
+  <p id="promo-msg" class="muted"></p>
+  <div class="bag-total"><span>Total</span><b id="bag-total">$0.00</b></div>
+  <button class="pill big wide" id="checkout" type="button">Check out</button>
+  <p id="checkout-msg" class="err" role="status"></p>
+</aside>
+
+<!-- account drawer -->
+<aside class="drawer" id="account" aria-label="Account" aria-hidden="true">
+  <div class="drawer-head">
+    <h2 id="account-title">Sign in</h2>
+    <button class="icon-btn" data-close type="button" aria-label="Close account panel">&times;</button>
+  </div>
+
+  <div id="acct-guest">
+    <div class="seg" role="tablist" aria-label="Sign in or create an account">
+      <button type="button" role="tab" id="seg-login" aria-selected="true">Sign in</button>
+      <button type="button" role="tab" id="seg-register" aria-selected="false">Create account</button>
+    </div>
+    <form id="login-form" class="stack">
+      <label>Username <input id="l-user" type="text" maxlength="16" autocomplete="username" required></label>
+      <label>Password <input id="l-pass" type="password" maxlength="100" autocomplete="current-password" required></label>
+      <button class="pill big wide" type="submit">Sign in</button>
+    </form>
+    <form id="register-form" class="stack" hidden>
+      <label>Username <input id="r-user" type="text" maxlength="16" autocomplete="username" required></label>
+      <label>Password <input id="r-pass" type="password" maxlength="100" autocomplete="new-password" required></label>
+      <label>Password again <input id="r-pass2" type="password" maxlength="100" autocomplete="new-password" required></label>
+      <p class="muted">3–16 letters, numbers, _ or -. Password 6+ characters, and not one you use anywhere real.</p>
+      <button class="pill big wide" type="submit">Create account</button>
+    </form>
+    <p id="acct-err" class="err" role="alert"></p>
+  </div>
+
+  <div id="acct-user" hidden>
+    <p class="hello">Signed in as <b id="me-name"></b></p>
+    <p id="me-tag"></p>
+    <p id="owner-link" hidden><a class="pill ghost" href="owner.html">Owner dashboard</a></p>
+    <button class="pill ghost wide" id="logout-btn" type="button">Sign out</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="tags.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
